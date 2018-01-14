@@ -851,6 +851,56 @@ namespace Blackjack
                             }
                         }
                         Console.WriteLine("Sinu käe väärtus on " + summa1);
+                        Console.WriteLine();
+                        Console.WriteLine("Vajuta suvalist numbrit, et võtta kaart juurde, klahvi nr 2, et passida või klahvi nr 3, et tõsta panust");
+                        ConsoleKeyInfo input13 = Console.ReadKey();
+                        int sisend13 = int.Parse(input13.KeyChar.ToString());
+
+
+                        if (sisend13 == 2)
+                        {
+                            Console.WriteLine("Passid");
+                            break; //stand
+                        }
+                        if (sisend13 == 3)
+                        {
+                            Console.WriteLine("Tõstad panust");
+                            tõstmine = true;
+                            break;
+                        }
+
+                        Console.Clear();
+                        Console.WriteLine("Sinu kontoseis on:\t" + kontoseis + "\t" + "Sinu panus on:\t" + panus);
+                        Console.WriteLine();
+                        Console.WriteLine("Diileri kaardid on \t" + ChosenOne2.Card + " ja varjatud kaart");
+                        Console.WriteLine();
+                        int index31 = rnd.Next(Kaardipakk.Count);
+                        var ChosenOne31 = Kaardipakk[index31];
+                        summa1 = summa1 + ChosenOne31.väärtus;
+                        Kaardipakk.RemoveAt(index31);
+                        Console.WriteLine("Sa võtsid endale juurde \t" + ChosenOne31.Card);
+                        Console.WriteLine();
+                        Console.WriteLine("Sul on nüüd käes \t" + ChosenOne.Card + "\t" + ChosenOne3.Card + "\t" + ChosenOne5.Card +
+                        "\t" + ChosenOne6.Card + "\t" + ChosenOne7.Card + "\t" + ChosenOne8.Card + "\t" + ChosenOne9.Card +
+                        "\t" + ChosenOne10.Card + "\t" + ChosenOne11.Card + "\t" + ChosenOne12.Card + "\t" + ChosenOne13.Card +
+                        "\t" + ChosenOne14.Card + "\t" + ChosenOne15.Card + "\t" + ChosenOne16.Card + "\t" + ChosenOne31.Card);
+                        if (ChosenOne31.väärtus == 11)
+                        {
+                            äss1++;
+                        }
+
+                        if (summa1 > 21)
+                        {
+                            if (äss1 > 0)
+                            {
+                                summa1 = summa1 - 10;
+                                äss1 = äss1 - 1;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
                     }
                     while (tõstmine)
                     {
@@ -1363,6 +1413,45 @@ namespace Blackjack
                         "\t" + ChosenOne24.Card + "\t" + ChosenOne25.Card + "\t" + ChosenOne26.Card + "\t" + ChosenOne27.Card + "\t" + ChosenOne28.Card);
                         Console.WriteLine();
                         if (ChosenOne28.väärtus == 11)
+                        {
+                            äss2++;
+                        }
+
+                        if (summa2 > 21)
+                        {
+                            if (äss2 > 0)
+                            {
+                                summa2 = summa2 - 10;
+                                äss2 = äss2 - 1;
+                            }
+                        }
+                        if (summa2 > 21)
+                        {
+                            Console.WriteLine("Diileri käe väärtus on " + summa2);
+                            Console.WriteLine();
+                            Console.WriteLine("Diiler läks lõhki, Sa võitsid!");
+                            plusskonto = true;
+                            võrdlus = false;
+                            break;
+                        }
+                        if (summa2 >= 17)
+                        {
+                            Console.WriteLine("Diileri käe väärtus on " + summa2 + "ja diiler passib");
+                            break;
+                        }
+                        Console.WriteLine("Diileri käe väärtus on " + summa2);
+                        Console.WriteLine();
+                        int index29 = rnd.Next(Kaardipakk.Count);
+                        var ChosenOne29 = Kaardipakk[index29];
+                        summa2 = summa2 + ChosenOne29.väärtus;
+                        Kaardipakk.RemoveAt(index29);
+                        Console.WriteLine("Diiler võttis uue kaardi " + ChosenOne29.Card);
+                        Console.WriteLine();
+                        Console.WriteLine("Diileri kaardid on \t" + ChosenOne2.Card + "\t" + ChosenOne4.Card + "\t" + ChosenOne17.Card + "\t" + ChosenOne18.Card +
+                        "\t" + ChosenOne19.Card + "\t" + ChosenOne20.Card + "\t" + ChosenOne21.Card + "\t" + ChosenOne22.Card + "\t" + ChosenOne23.Card +
+                        "\t" + ChosenOne24.Card + "\t" + ChosenOne25.Card + "\t" + ChosenOne26.Card + "\t" + ChosenOne27.Card + "\t" + ChosenOne28.Card + "\t" + ChosenOne29.Card);
+                        Console.WriteLine();
+                        if (ChosenOne29.väärtus == 11)
                         {
                             äss2++;
                         }
